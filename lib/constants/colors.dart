@@ -7,4 +7,5 @@ class AppColor {
   static const primaryColor = Color(0xFFFF9900);
   static const textColor = Color(0xFF333333);
   static const greyColor = Color(0xFF999999);
+  static const dividerColor = Color(0xFFD2D2D2);
 }
