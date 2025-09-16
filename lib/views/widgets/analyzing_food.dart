@@ -1,11 +1,21 @@
+// ignore_for_file: unused_field
+
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:focofit/constants/colors.dart';
 import 'package:focofit/views/pages/diary/food_recorded_page.dart';
+import 'package:focofit/views/widgets/header_container.dart';
 import 'package:focofit/views/widgets/text.dart';
-import 'dart:async';
 
 class AnalyzingFoodPage extends StatefulWidget {
-  const AnalyzingFoodPage({super.key});
+  final String title;
+  final VoidCallback? onComplete;
+  const AnalyzingFoodPage({
+    super.key,
+    this.title = "Describe meal",
+    this.onComplete,
+  });
 
   @override
   State<AnalyzingFoodPage> createState() => _AnalyzingFoodPageState();
@@ -44,15 +54,15 @@ class _AnalyzingFoodPageState extends State<AnalyzingFoodPage> {
         });
       } else {
         timer.cancel();
-        // Navigate to next page when complete
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder:
-                (context) =>
-                    FoodRecordedPage(), // Replace with your actual next page
-          ),
-        );
+
+        if (widget.onComplete != null) {
+          widget.onComplete!();
+        } else {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const FoodRecordedPage()),
+          );
+        }
       }
     });
   }
@@ -66,63 +76,70 @@ class _AnalyzingFoodPageState extends State<AnalyzingFoodPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: Colors.transparent,
+      backgroundColor: const Color(0xFFF5F5F5),
+      body: Column(
+        children: [
+          HeaderContainer(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16.0, top: 40, right: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset(
+                    'assets/icons/Back.png',
+                    height: 39,
+                    width: 39,
+                    color: Colors.transparent,
+                  ),
+                  Center(
+                    child: AppText(
+                      widget.title,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.textColor,
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/icons/Back.png',
+                    height: 39,
+                    width: 39,
+                    color: Colors.transparent,
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-        title: AppText(
-          'Describe meal',
-          fontSize: 18,
-          fontWeight: FontWeight.w500,
-          color: Colors.black,
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Divider(),
-            Spacer(),
-            Image.asset('assets/icons/analyze.png'),
-            // Progress indicator
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.1,
-              ),
-              child: LinearProgressIndicator(
-                // value: _progress,
-                backgroundColor: Colors.grey[200],
-                color: AppColor.primaryColor,
-                minHeight: 8,
-              ),
+          Expanded(
+            child: Column(
+              children: [
+                Spacer(),
+                Image.asset('assets/icons/analyze.png'),
+                SizedBox(height: 20),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.1,
+                  ),
+                  child: LinearProgressIndicator(
+                    // value: _progress,
+                    backgroundColor: Colors.grey[200],
+                    color: AppColor.primaryColor,
+                    minHeight: 8,
+                  ),
+                ),
+                SizedBox(height: 24),
+                AppText(
+                  _progressMessages[_currentStep < _progressMessages.length
+                      ? _currentStep
+                      : _progressMessages.length - 1],
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                ),
+                Spacer(),
+              ],
             ),
-
-            SizedBox(height: 24),
-
-            // Progress text
-            AppText(
-              _progressMessages[_currentStep < _progressMessages.length
-                  ? _currentStep
-                  : _progressMessages.length - 1],
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
-            ),
-
-            Spacer(),
-
-            // Progress percentage
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
