@@ -4,7 +4,10 @@ import 'package:focofit/views/widgets/header_container.dart';
 import 'package:focofit/views/widgets/text.dart';
 
 class DiaryHeader extends StatelessWidget {
-  const DiaryHeader({super.key});
+  final String? icon;
+  final Function()? onTap;
+  final bool showBadge;
+  const DiaryHeader({super.key, this.icon, this.onTap, this.showBadge = true});
 
   @override
   Widget build(BuildContext context) {
@@ -17,47 +20,64 @@ class DiaryHeader extends StatelessWidget {
             SizedBox(height: 20),
             Row(
               children: [
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/profile.png'),
-                ),
-                SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   children: [
-                    AppText(
-                      'Welcome',
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/profile.png'),
                     ),
-                    AppText(
-                      'Weslei Vicentini',
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
+                    SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AppText(
+                          'Welcome',
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        AppText(
+                          'Weslei Vicentini',
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ],
                     ),
                   ],
                 ),
                 const Spacer(),
 
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    SvgPicture.asset('assets/icons/notification.svg'),
-                    Positioned(
-                      child: Container(
-                        width: 10,
-                        height: 10,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
+                GestureDetector(
+                  onTap: () {
+                    if (onTap != null) {
+                      onTap!();
+                    } else {}
+                  },
+
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      SvgPicture.asset(icon ?? 'assets/icons/notification.svg'),
+                      if (showBadge)
+                        Positioned(
+                          child: Container(
+                            width: 10,
+                            height: 10,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: AppText(
+                                '9',
+                                color: Colors.black,
+                                fontSize: 8,
+                              ),
+                            ),
+                          ),
                         ),
-                        child: Center(
-                          child: AppText('9', color: Colors.black, fontSize: 8),
-                        ),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
