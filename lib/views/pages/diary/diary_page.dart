@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:focofit/views/pages/diary/components/diary_header.dart';
 import 'package:focofit/views/pages/diary/components/goal_tile.dart';
 import 'package:focofit/views/pages/diary/components/home_tiles.dart';
+import 'package:focofit/views/pages/notifications/notification_page.dart';
 import 'package:focofit/views/widgets/bottom_sheet.dart';
 import 'package:focofit/views/widgets/calendar_widget.dart';
+import 'package:get/get.dart';
 
 class DiaryPage extends StatefulWidget {
   const DiaryPage({super.key});
@@ -19,7 +21,11 @@ class _DiaryPageState extends State<DiaryPage> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          DiaryHeader(),
+          DiaryHeader(
+            onTap: () {
+              Get.to(() => NotificationPage());
+            },
+          ),
           SizedBox(height: 20),
           CalendarWidget(),
           SizedBox(height: 20),
