@@ -135,30 +135,5 @@ class _RegistrarExercisePageState extends State<RegistrarExercisePage> {
     );
   }
 
-  // ignore: unused_element
-  Widget _buildTab(String title, int tabIndex) {
-    bool isSelected = selectedTabIndex == tabIndex;
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedTabIndex = tabIndex;
-        });
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        decoration: BoxDecoration(
-          color: isSelected ? AppColor.primaryColor : Colors.transparent,
-          borderRadius: BorderRadius.circular(100),
-        ),
-        child: Center(
-          child: AppText(
-            title,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: isSelected ? AppColor.whiteColor : AppColor.greyColor,
-          ),
-        ),
-      ),
-    );
-  }
+
 }
