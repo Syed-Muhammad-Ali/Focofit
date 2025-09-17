@@ -35,6 +35,8 @@ class AppTextfield extends StatefulWidget {
   String? title;
   TextCapitalization? textCapitalization;
   bool? useCountFormater;
+  Color? titleColor;
+  double? titleSize;
 
   AppTextfield({
     super.key,
@@ -46,7 +48,7 @@ class AppTextfield extends StatefulWidget {
     this.subWidget,
     this.bottomSpace = 12,
     this.suffixIcon,
-     this.ctr,
+    this.ctr,
     this.height,
     this.onTap,
     this.borderColor,
@@ -66,6 +68,8 @@ class AppTextfield extends StatefulWidget {
     this.textCapitalization,
     this.useCountFormater,
     this.title,
+    this.titleColor,
+    this.titleSize,
   });
 
   @override
@@ -86,9 +90,9 @@ class _AppTextfieldState extends State<AppTextfield> {
         children: [
           AppText(
             widget.title ?? '',
-            fontSize: 14,
+            fontSize: widget.titleSize ?? 14,
             fontWeight: FontWeight.w500,
-            color: Color(0xff999999),
+            color: widget.titleColor ?? Color(0xff999999),
           ),
           SizedBox(height: widget.title != null ? 4 : 0),
           SizedBox(

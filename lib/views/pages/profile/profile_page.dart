@@ -4,6 +4,8 @@ import 'package:focofit/views/pages/diary/components/diary_header.dart';
 import 'package:focofit/views/pages/profile/components/ChartSection.dart';
 import 'package:focofit/views/pages/profile/components/CustomTable.dart';
 import 'package:focofit/views/pages/profile/components/StatItem.dart';
+import 'package:focofit/views/pages/setting/settings_page.dart';
+import 'package:get/get.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -33,7 +35,9 @@ class _ProfilePageState extends State<ProfilePage> {
             DiaryHeader(
               icon: 'assets/icons/setting-2.svg',
               showBadge: false,
-              onTap: () {},
+              onTap: () {
+                Get.to(() => SettingsPage());
+              },
             ),
             ChartSection(
               title: "Weight history",
