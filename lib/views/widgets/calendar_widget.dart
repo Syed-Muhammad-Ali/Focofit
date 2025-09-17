@@ -72,21 +72,21 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   String _getDayName(int weekday) {
     switch (weekday) {
       case DateTime.monday:
-        return 'SEG';
+        return 'MON';
       case DateTime.tuesday:
-        return 'TER';
+        return 'TUE';
       case DateTime.wednesday:
-        return 'QUA';
+        return 'WED';
       case DateTime.thursday:
-        return 'QUI';
+        return 'THU';
       case DateTime.friday:
-        return 'SEX';
+        return 'FRI';
       case DateTime.saturday:
-        return 'SAB';
+        return 'SAT';
       case DateTime.sunday:
-        return 'DOM';
+        return 'SUN';
       default:
-        return 'DOM';
+        return 'SUN';
     }
   }
 
