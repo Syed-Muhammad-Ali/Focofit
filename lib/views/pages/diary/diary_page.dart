@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:focofit/views/pages/adding_excercises/registrar_exercise_page.dart';
 import 'package:focofit/views/pages/diary/components/diary_header.dart';
 import 'package:focofit/views/pages/diary/components/goal_tile.dart';
 import 'package:focofit/views/pages/diary/components/home_tiles.dart';
@@ -72,7 +73,11 @@ class _DiaryPageState extends State<DiaryPage> {
 
                     SizedBox(height: MediaQuery.sizeOf(context).height * .02),
                     //Exercises
-                    ExercisesTile(onTap: () {}),
+                    ExercisesTile(
+                      onTap: () {
+                        Get.to(() => RegistrarExercisePage());
+                      },
+                    ),
                   ],
                 ),
               ),
