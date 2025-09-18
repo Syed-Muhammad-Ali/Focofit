@@ -79,8 +79,7 @@ class RegisterMealPageState extends State<RegisterMealPage> {
           Expanded(
             child: Column(
               children: [
-                SizedBox(height: MediaQuery.sizeOf(context).height * .04),
-
+                SizedBox(height: MediaQuery.sizeOf(context).height * .02),
                 Row(
                   children: [
                     ActionCard(
@@ -124,38 +123,35 @@ class RegisterMealPageState extends State<RegisterMealPage> {
                   filledColor: AppColor.greyColor.withOpacity(0.10),
                 ),
                 SizedBox(height: MediaQuery.sizeOf(context).height * .01),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: DiaryContainerTile(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 4,
-                      vertical: 4,
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: CustomTabBar(
-                            title: "All",
-                            isSelected: selectedTabIndex == 0,
-                            onTap: () => setState(() => selectedTabIndex = 0),
-                          ),
+                DiaryContainerTile(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 4,
+                    vertical: 4,
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: CustomTabBar(
+                          title: "All",
+                          isSelected: selectedTabIndex == 0,
+                          onTap: () => setState(() => selectedTabIndex = 0),
                         ),
-                        Expanded(
-                          child: CustomTabBar(
-                            title: "Favorites",
-                            isSelected: selectedTabIndex == 1,
-                            onTap: () => setState(() => selectedTabIndex = 1),
-                          ),
+                      ),
+                      Expanded(
+                        child: CustomTabBar(
+                          title: "Favorites",
+                          isSelected: selectedTabIndex == 1,
+                          onTap: () => setState(() => selectedTabIndex = 1),
                         ),
-                        Expanded(
-                          child: CustomTabBar(
-                            title: "Servants",
-                            isSelected: selectedTabIndex == 2,
-                            onTap: () => setState(() => selectedTabIndex = 2),
-                          ),
+                      ),
+                      Expanded(
+                        child: CustomTabBar(
+                          title: "Servants",
+                          isSelected: selectedTabIndex == 2,
+                          onTap: () => setState(() => selectedTabIndex = 2),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(height: 10),
