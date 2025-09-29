@@ -18,7 +18,7 @@ class AppTextfield extends StatefulWidget {
   String? labelText;
   Color? filledColor;
   Color? borderColor;
-  final TextEditingController ctr;
+  final TextEditingController? ctr;
   TextInputType? textInputType;
   double? height;
   int? maxLength;
@@ -46,7 +46,7 @@ class AppTextfield extends StatefulWidget {
     this.subWidget,
     this.bottomSpace = 12,
     this.suffixIcon,
-    required this.ctr,
+     this.ctr,
     this.height,
     this.onTap,
     this.borderColor,

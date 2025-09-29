@@ -40,6 +40,7 @@ dependencies:
   horizontal_week_calendar: ^0.0.20
   wheel_picker: ^0.2.2
   percent_indicator: ^4.2.3
+  fl_chart: ^1.1.1
 
 dev_dependencies:
   flutter_test:

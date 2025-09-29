@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:focofit/constants/colors.dart';
 import 'package:focofit/views/pages/bnb/bnb_page.dart';
 import 'package:focofit/views/pages/diary/result_correction_page.dart';
+import 'package:focofit/views/widgets/app_button.dart';
 import 'package:focofit/views/widgets/header_container.dart';
 import 'package:focofit/views/widgets/text.dart';
-import 'package:focofit/views/widgets/app_button.dart';
 import 'package:get/get.dart';
-import 'package:wheel_picker/wheel_picker.dart';
 
 class FoodRecordedPage extends StatefulWidget {
   const FoodRecordedPage({super.key});
@@ -87,7 +86,6 @@ class _FoodRecordedPageState extends State<FoodRecordedPage> {
             padding: EdgeInsets.all(20),
             child: Column(
               children: [
-                // Handle bar
                 Container(
                   width: 40,
                   height: 4,
@@ -171,6 +169,7 @@ class _FoodRecordedPageState extends State<FoodRecordedPage> {
             ),
           ),
     );
+  
   }
 
   void _showDeleteBottomSheet() {

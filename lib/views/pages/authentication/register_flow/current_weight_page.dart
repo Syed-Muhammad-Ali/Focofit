@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:focofit/constants/colors.dart';
 import 'package:focofit/views/pages/authentication/register_flow/goal_weight_page.dart';
