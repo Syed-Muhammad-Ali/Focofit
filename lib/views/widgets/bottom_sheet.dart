@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:focofit/constants/colors.dart';
+import 'package:focofit/views/pages/adding_meal/register_meal/register_meal_page.dart';
+import 'package:focofit/views/pages/adding_meal/scan_food/scan_food_page.dart';
 import 'package:focofit/views/pages/diary/describe_food.dart';
 import 'package:focofit/views/widgets/text.dart';
+import 'package:get/get.dart';
 
 class AppBottomSheet {
   void showLogMealBottomSheet(BuildContext context) {
@@ -53,8 +56,7 @@ class AppBottomSheet {
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pop(context);
-                            // TODO: Navigate to scan food
+                            Get.to(() => CameraScreen(scanType: ScanType.food));
                           },
                           child: Container(
                             height: MediaQuery.sizeOf(context).height * .14,
@@ -177,8 +179,7 @@ class AppBottomSheet {
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pop(context);
-                            // TODO: Navigate to search food
+                            Get.to(() => RegisterMealPage());
                           },
                           child: Container(
                             height: MediaQuery.sizeOf(context).height * .14,
